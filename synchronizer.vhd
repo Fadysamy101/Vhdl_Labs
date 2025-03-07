@@ -21,7 +21,10 @@ begin
 	 flop1<=async_in;
 	 flop2<=flop1;	 
 	end if;
-	sync_out<=flop2;
+	process(flop2)
+begin
+   sync_out <= flop2;
+end process;
 	end process;
 
 end architecture A_Sync ;  
