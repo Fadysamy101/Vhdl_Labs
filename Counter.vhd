@@ -20,12 +20,12 @@ architecture A_Counter of Counter is
     signal counter_reg : unsigned(Counter_Size-1 downto 0) := (others => '0');
 
 begin
-    process(clk, rst)
+    process(clk, rst,enable)
     begin
-        if rst = '1' then
+        if not rst = '1' then
             counter_reg <= (others => '0');
         elsif rising_edge(clk) then 
-            if enable = '1' then 
+            if not enable = '1' then 
                 counter_reg <= counter_reg + 1; 
             end if; 
         end if;
